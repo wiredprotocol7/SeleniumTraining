@@ -1,0 +1,62 @@
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class test {
+
+	
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//setting the driver executable
+		System.setProperty("webdriver.chrome.driver", "E:\\Selenium\\chromedriver_win32\\chromedriver.exe");
+
+		WebDriver driver=new ChromeDriver();
+
+		//Applied wait time
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(500));
+	
+		//maximize window
+		driver.manage().window().maximize();
+
+		//open browser with desried URL
+		driver.get("https://www.makemytrip.com/");
+		try {
+			Actions act = new Actions(driver);
+
+			WebElement ele = driver.findElement(By.id("fromCity"));
+			act.doubleClick(ele).perform();
+			
+			
+			
+		} catch (Exception e) {
+			driver.findElement(By.id("fromCity")).click();
+			e.printStackTrace();
+		}
+		
+		driver.findElement(By.xpath("//input[@placeholder='From']")).click();
+		driver.findElement(By.xpath("//input[@placeholder='From']")).sendKeys("BLR");
+		driver.findElement(By.id("react-autowhatever-1-section-0-item-0")).click();
+	
+		//react-autowhatever-1-section-1-item-1
+		driver.findElement(By.id("react-autowhatever-1-section-1-item-1")).click();
+		driver.findElement(By.xpath("//div[@aria-label='Wed Dec 01 2021']")).click();
+		driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div/div[2]/p/a")).click();
+       driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/div[2]")).click();
+       
+       
+		
+	
+		
+		
+
+	}
+
+}
